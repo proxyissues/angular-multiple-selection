@@ -231,12 +231,13 @@ angular.module('multipleSelection', [])
                             childs[i].scope().isSelected = event.ctrlKey ? !childs[i].scope().isSelected : true;
                             childs[i].scope().$apply();
                         } else {
+                            /* //Incorrect.  You cannot go from [] -> selected without going through isSelecting.  Doing this results in unexpected selection.
                             if (checkElementHitting(transformBox(childs[i].prop('offsetLeft'), childs[i].prop('offsetTop'), childs[i].prop('offsetLeft') + childs[i].prop('offsetWidth'), childs[i].prop('offsetTop') + childs[i].prop('offsetHeight')), transformBox(event.pageX, event.pageY, event.pageX, event.pageY))) {
                                 if (childs[i].scope().isSelected === false) {
                                     childs[i].scope().isSelected = true;
                                     childs[i].scope().$apply();
                                 }
-                            }
+                            }*/
                         }
                     }
                     // Remove listeners
