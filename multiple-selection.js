@@ -23,6 +23,15 @@ function getSelectableElements(element) {
     return out;
 }
 
+function clearSelection(element){
+    //childs[i].scope().isSelected = false;
+    var childs = getSelectableElements(element);
+
+    for (var i = 0; i < childs.length; i++) {
+        childs[i].scope().isSelected = false;
+    }
+}
+
 function offset(element) {
     var documentElem,
         box = {
