@@ -1,4 +1,6 @@
-/**
+(function(){//namespace protection.
+
+    /**
  * Angular JS multiple-selection module
  * @author Maksym Pomazan
  * @version 0.0.3
@@ -243,3 +245,6 @@ angular.module('multipleSelection', [])
             }
         };
     }]);
+
+
+})();//End Namespace protection.
