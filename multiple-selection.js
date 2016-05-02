@@ -96,6 +96,26 @@ angular.module('multipleSelection', [])
             link: function(scope, element, iAttrs, controller) {
 
                 scope.isSelectableZone = true;
+                var fnInstall = iAttrs.multipleSelectionZone;
+                var childField = iAttrs.multipleSelectionZoneField;
+                if(fnInstall && fnInstall.length > 0 && childField && childField.length > 0){
+                    scope.$parent.$parent[fnInstall] = function(){
+                        var result = [];
+                        var children = getSelectableElements(element);
+                        angular.forEach(children, function(child){
+                            if(child.scope().isSelected){
+                                result.push(child.scope()[childField]);
+                            }
+                        });
+                        return result;
+                    }
+                }
+                var fnClear = iAttrs.multipleSelectionClear;
+                if(fnClear && fnClear.length > 0){
+                    scope.$parent.$parent[fnClear] = function(){
+                        clearSelection(element);
+                    }
+                }
 
                 var startX = 0,
                     startY = 0;
